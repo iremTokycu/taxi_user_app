@@ -4,19 +4,20 @@ import 'package:flutter_credit_card/credit_card_model.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
 import 'package:taxi/sidebar.dart';
 
-void main() => runApp(AddCreditCart());
+void main() => runApp(new MaterialApp(
+      home: new AddCreditCart(),
+    ));
 
 class AddCreditCart extends StatelessWidget {
+  const AddCreditCart({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: DemoApp(),
-    );
+    return DemoApp();
   }
 }
 
 class DemoApp extends StatefulWidget {
+  const DemoApp({Key key}) : super(key: key);
   @override
   _DemoAppState createState() => _DemoAppState();
 }
@@ -43,9 +44,12 @@ class _DemoAppState extends State<DemoApp> {
     return Scaffold(
       drawer: SidebarPage(),
       appBar: AppBar(
-        title: Text('Kredi Kartı Ekleme Ekranı'),
+        iconTheme: IconThemeData(
+          color: Colors.black, //change your color here
+        ),
+        title: Text('Kredi Kartı Ekleme Ekranı',style: TextStyle(color: Colors.black),),
         centerTitle: true,
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.yellow,
       ),
       body: SafeArea(
         child: Column(

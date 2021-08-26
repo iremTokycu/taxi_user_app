@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,10 +12,14 @@ import 'package:taxi/vehicle_type.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'code.dart';
 import 'date_picker.dart';
+import 'package:geolocator/geolocator.dart';
 
-void main() => runApp(Maps());
+void main() => runApp(new MaterialApp(
+      home: new Maps(),
+    ));
 
 class Maps extends StatelessWidget {
+  const Maps({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MapScreen();
@@ -33,6 +39,7 @@ class _MapScreenState extends State<MapScreen> {
     zoom: 11.5,
   );
   GoogleMapController _googleMapController;
+  Completer<GoogleMapController> _controller = Completer();
   final format = DateFormat("yyyy-MM-dd HH:mm");
   final initialValue = DateTime.now();
   AutovalidateMode autoValidateMode = AutovalidateMode.onUserInteraction;
@@ -42,7 +49,26 @@ class _MapScreenState extends State<MapScreen> {
   DateTime value = DateTime.now();
   int changedCount = 0;
   int savedCount = 0;
+  static const LatLng _center =
+      const LatLng(40.73814400731573, 31.61535610048799);
+  final Set<Marker> _markers = {};
+  LatLng _lastMapPosition = _center;
   Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
+  buildmap() async {
+    Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+    _markers.add(Marker(
+// This marker id can be anything that uniquely identifies each marker.
+      markerId: MarkerId(_lastMapPosition.toString()),
+      position: new LatLng(40.73814400731573, 31.61535610048799),
+      infoWindow: InfoWindow(
+        title: 'Şuanki konum',
+      ),
+      icon: BitmapDescriptor.defaultMarker,
+    ));
+  }
+
   @override
   void dispose() {
     _googleMapController.dispose();
@@ -52,6 +78,7 @@ class _MapScreenState extends State<MapScreen> {
   @override
   void initState() {
     // TODO: implement initState
+    buildmap();
     getPaymentRate();
     super.initState();
   }
@@ -64,11 +91,22 @@ class _MapScreenState extends State<MapScreen> {
     });
   }
 
+  void _onMapCreated(GoogleMapController controller) {
+    _controller.complete(controller);
+  }
+
+  void _onCameraMove(CameraPosition position) {
+    _lastMapPosition = position.target;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: SidebarPage(),
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Colors.black, //change your color here
+        ),
         backgroundColor: Colors.yellow,
         title: Text(
           "Taksi Çağırma Ekranı",
@@ -83,7 +121,9 @@ class _MapScreenState extends State<MapScreen> {
             myLocationButtonEnabled: false,
             zoomControlsEnabled: false,
             initialCameraPosition: _initialCameraPosition,
-            onMapCreated: (controller) => _googleMapController = controller,
+            onMapCreated: _onMapCreated,
+            markers: _markers,
+            onCameraMove: _onCameraMove,
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 180.0, right: 12),
@@ -92,9 +132,6 @@ class _MapScreenState extends State<MapScreen> {
               child: FloatingActionButton(
                 backgroundColor: Colors.yellow,
                 foregroundColor: Colors.black,
-                onPressed: () => _googleMapController.animateCamera(
-                  CameraUpdate.newCameraPosition(_initialCameraPosition),
-                ),
                 child: const Icon(
                   Icons.center_focus_strong,
                 ),

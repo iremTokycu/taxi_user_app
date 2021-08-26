@@ -3,20 +3,40 @@ import 'package:taxi/sidebar.dart';
 
 import 'add_credit_cart.dart';
 
+void main() => runApp(new MaterialApp(
+      home: new CreditCardsPage(),
+    ));
+
 class CreditCardsPage extends StatelessWidget {
+  const CreditCardsPage({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return CreditCardsPageWidget();
+  }
+}
+
+class CreditCardsPageWidget extends StatefulWidget {
+  const CreditCardsPageWidget({Key key}) : super(key: key);
+
+  @override
+  CreditCardsPageWidgetState createState() => CreditCardsPageWidgetState();
+}
+
+class CreditCardsPageWidgetState extends State<CreditCardsPageWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: SidebarPage(),
       appBar: AppBar(
-        title: Text("Kredi Kartlarım"),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          color: Colors.white,
-          iconSize: 30,
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-      ),
+          iconTheme: IconThemeData(
+            color: Colors.black, //change your color here
+          ),
+          backgroundColor: Colors.yellow,
+          title: Text(
+            "Kredi Kartlarım",
+            style: TextStyle(color: Colors.black),
+          )),
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(8.0),

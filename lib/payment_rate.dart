@@ -8,9 +8,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:taxi/sidebar.dart';
 import 'konum.dart';
 
-void main() => runApp(const PaymentRate());
+void main() => runApp(new MaterialApp(
+      home: new PaymentRate(),
+    ));
 
 /// This is the main application widget.
 class PaymentRate extends StatelessWidget {
@@ -20,23 +23,7 @@ class PaymentRate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: _title,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text(_title),
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            color: Colors.white,
-            iconSize: 30,
-            onPressed: () => Navigator.of(context).pop(),
-          ),
-        ),
-        body: const Center(
-          child: PaymentRateWidget(),
-        ),
-      ),
-    );
+    return PaymentRateWidget();
   }
 }
 
@@ -78,67 +65,73 @@ class _PaymentRateWidgetState extends State<PaymentRateWidget> {
       return Colors.red;
     }
 
-    return Padding(
-      padding: const EdgeInsets.all(12.0),
-      child: Column(
-        children: [
-          Card(
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: CheckboxListTile(
-                title: Text("Nakit"),
-                secondary: Icon(Icons.money_outlined),
-                controlAffinity: ListTileControlAffinity.platform,
-                value: _checked,
-                onChanged: (bool value) async {
-                  paymentRate = await setPaymentRate("Nakit");
+    return Scaffold(
+      drawer: SidebarPage(),
+      appBar: AppBar(
+        title: Text("Ödeme Yöntemi"),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          children: [
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: CheckboxListTile(
+                  title: Text("Nakit"),
+                  secondary: Icon(Icons.money_outlined),
+                  controlAffinity: ListTileControlAffinity.platform,
+                  value: _checked,
+                  onChanged: (bool value) async {
+                    paymentRate = await setPaymentRate("Nakit");
 
-                  setState(() {
-                    _checked = value;
-                    _checked1 = false;
-                    print(paymentRate);
+                    setState(() {
+                      _checked = value;
+                      _checked1 = false;
+                      print(paymentRate);
 
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Maps()),
-                    );
-                  });
-                },
-                activeColor: Colors.green,
-                checkColor: Colors.black,
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Maps()),
+                      );
+                    });
+                  },
+                  activeColor: Colors.green,
+                  checkColor: Colors.black,
+                ),
               ),
             ),
-          ),
-          SizedBox(
-            height: 7,
-          ),
-          Card(
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: CheckboxListTile(
-                title: Text("Kredi Kartı"),
-                secondary: Icon(Icons.payment),
-                controlAffinity: ListTileControlAffinity.platform,
-                value: _checked1,
-                onChanged: (bool value) async {
-                  paymentRate = await setPaymentRate("Kredi Kartı");
-                  setState(() {
-                    print(paymentRate);
-                    _checked1 = value;
-                    _checked = false;
-
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Maps()),
-                    );
-                  });
-                },
-                activeColor: Colors.green,
-                checkColor: Colors.black,
-              ),
+            SizedBox(
+              height: 7,
             ),
-          )
-        ],
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: CheckboxListTile(
+                  title: Text("Kredi Kartı"),
+                  secondary: Icon(Icons.payment),
+                  controlAffinity: ListTileControlAffinity.platform,
+                  value: _checked1,
+                  onChanged: (bool value) async {
+                    paymentRate = await setPaymentRate("Kredi Kartı");
+                    setState(() {
+                      print(paymentRate);
+                      _checked1 = value;
+                      _checked = false;
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Maps()),
+                      );
+                    });
+                  },
+                  activeColor: Colors.green,
+                  checkColor: Colors.black,
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

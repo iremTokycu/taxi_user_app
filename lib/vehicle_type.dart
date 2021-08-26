@@ -7,6 +7,7 @@
 // be `Colors.red`.
 
 import 'package:flutter/material.dart';
+import 'package:taxi/sidebar.dart';
 
 import 'konum.dart';
 
@@ -23,13 +24,10 @@ class VehicleType extends StatelessWidget {
     return MaterialApp(
       title: _title,
       home: Scaffold(
+        drawer: SidebarPage(),
         appBar: AppBar(
-          title: const Text(_title),
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            color: Colors.white,
-            iconSize: 30,
-            onPressed: () => Navigator.of(context).pop(),
+          title: const Text(
+            _title,
           ),
         ),
         body: const Center(

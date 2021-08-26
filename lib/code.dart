@@ -2,14 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:pinput/pin_put/pin_put.dart';
 import 'package:taxi/konum.dart';
 
-void main() => runApp(CodePage());
+void main() => runApp(new MaterialApp(
+      home: new PinPutTest(),
+    ));
 
-class CodePage extends StatefulWidget {
+class PinPutTest extends StatelessWidget {
+  const PinPutTest({Key key}) : super(key: key);
+
   @override
-  CodePageState createState() => CodePageState();
+  Widget build(BuildContext context) {
+    return PinPutWidget();
+  }
 }
 
-class CodePageState extends State<CodePage> {
+class PinPutWidget extends StatefulWidget {
+  const PinPutWidget({Key key}) : super(key: key);
+
+  @override
+  PinPutWidgetState createState() => PinPutWidgetState();
+}
+
+class PinPutWidgetState extends State<PinPutWidget> {
   final TextEditingController _pinPutController = TextEditingController();
   final FocusNode _pinPutFocusNode = FocusNode();
 
@@ -22,73 +35,78 @@ class CodePageState extends State<CodePage> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: Colors.green,
-        hintColor: Colors.green,
+    return Scaffold(
+      appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Colors.black, //change your color here
+        ),
+        backgroundColor: Colors.yellow,
+        title: Text(
+          'Doğrulama Kodu Ekranı',
+          style: TextStyle(color: Colors.black),
+        ),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          color: Colors.white,
+          iconSize: 30,
+          onPressed: () => Navigator.of(context).pop(),
+        ),
       ),
-      home: Scaffold(
-        appBar: AppBar(title: Text('Doğrulama Kodu Ekranı')),
-        backgroundColor: Colors.white,
-        body: Builder(
-          builder: (context) {
-            return Center(
-              child: SingleChildScrollView(
-                child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Image.asset(
-                            "assets/images/taksi_500x500_arkaseffaf.png"),
-                        SizedBox(
-                          height: 15,
+      backgroundColor: Colors.white,
+      body: Builder(
+        builder: (context) {
+          return Center(
+            child: SingleChildScrollView(
+              child: Center(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Image.asset(
+                      "assets/images/taksi_500x500_arkaseffaf.png",
+                      width: 200,
+                      height: 200,
+                    ),
+                    Container(
+                      color: Colors.white,
+                      margin: const EdgeInsets.only(right: 20.0, left: 20.0),
+                      padding: const EdgeInsets.only(
+                          right: 20.0, left: 20.0, bottom: 20),
+                      child: PinPut(
+                        fieldsCount: 6,
+                        onSubmit: (String pin) => _showSnackBar(pin, context),
+                        focusNode: _pinPutFocusNode,
+                        controller: _pinPutController,
+                        submittedFieldDecoration: _pinPutDecoration.copyWith(
+                          borderRadius: BorderRadius.circular(20.0),
                         ),
-                        Container(
-                          color: Colors.white,
-                          margin: const EdgeInsets.all(20.0),
-                          padding: const EdgeInsets.all(20.0),
-                          child: PinPut(
-                            fieldsCount: 5,
-                            onSubmit: (String pin) =>
-                                _showSnackBar(pin, context),
-                            focusNode: _pinPutFocusNode,
-                            controller: _pinPutController,
-                            submittedFieldDecoration:
-                                _pinPutDecoration.copyWith(
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
-                            selectedFieldDecoration: _pinPutDecoration,
-                            followingFieldDecoration:
-                                _pinPutDecoration.copyWith(
-                              borderRadius: BorderRadius.circular(5.0),
-                              border: Border.all(
-                                color: Colors.deepPurpleAccent.withOpacity(.5),
-                              ),
-                            ),
+                        selectedFieldDecoration: _pinPutDecoration,
+                        followingFieldDecoration: _pinPutDecoration.copyWith(
+                          borderRadius: BorderRadius.circular(5.0),
+                          border: Border.all(
+                            color: Colors.deepPurpleAccent.withOpacity(.5),
                           ),
                         ),
-                        const SizedBox(height: 30.0),
-                        RaisedButton(
-                          color: Colors.green,
-                          child: Text("Giriş Yap"),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => Maps()),
-                            );
-                          },
-                        )
-                      ],
+                      ),
                     ),
-                  ),
+                    RaisedButton(
+                      color: Colors.green,
+                      child: Text(
+                        "Giriş Yap",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      onPressed: () {
+                        Route route = MaterialPageRoute(builder: (context) {
+                          return Maps();
+                        });
+                        Navigator.push(context, route);
+                      },
+                    )
+                  ],
                 ),
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }

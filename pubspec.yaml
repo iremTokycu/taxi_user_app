@@ -48,6 +48,7 @@ dependencies:
   ndialog: ^4.1.0
   flutter_slidable: ^0.6.0
   fluttertoast: ^8.0.8
+  geolocator: ^6.1.4
 
 
 dev_dependencies:

@@ -69,7 +69,7 @@ class SidebarPage extends StatelessWidget {
               },
             ),
             SizedBox(
-              height: 16,
+              height: 24,
             ),
             buildMenuItem(
                 text: 'Kredi Kartlarım',
@@ -96,13 +96,6 @@ class SidebarPage extends StatelessWidget {
                 text: 'Yolculuk Geçmişi',
                 icon: Icons.calendar_today,
                 onClicked: () => selectedItem(context, 3)),
-            SizedBox(
-              height: 16,
-            ),
-            buildMenuItem(
-                text: 'Ödeme Ekranı',
-                icon: Icons.account_balance_wallet_outlined,
-                onClicked: () => selectedItem(context, 4)),
             const SizedBox(
               height: 24,
             ),
@@ -177,11 +170,6 @@ class SidebarPage extends StatelessWidget {
           builder: (context) => LoginPage(),
         ));
 
-        break;
-      case 5:
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => LoginPage(),
-        ));
         break;
     }
   }
