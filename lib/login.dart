@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_login/flutter_login.dart';
 import 'package:get_it/get_it.dart';
+import 'package:taxi/konum.dart';
+import 'package:taxi/model/api_response.dart';
 import 'package:taxi/service/user_service.dart';
 
-import 'konum.dart';
 import 'model/user.dart';
 
 void main() {
@@ -12,26 +13,47 @@ void main() {
   ));
 }
 
-const users = {
-  'dribbble@gmail.com': '12345',
-  'hunter@gmail.com': 'hunter',
-};
-
 // ignore: must_be_immutable
 class LoginPage extends StatelessWidget {
+  const LoginPage({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return LoginPageWidget();
+  }
+}
+
+class LoginPageWidget extends StatefulWidget {
+  const LoginPageWidget({Key key}) : super(key: key);
+
+  @override
+  _LoginPageWidgetState createState() => _LoginPageWidgetState();
+}
+
+class _LoginPageWidgetState extends State<LoginPageWidget> {
   UserService get userService => GetIt.I<UserService>();
+
   Duration get loginTime => const Duration(milliseconds: 2250);
   User user = new User();
+  bool isValid = false;
 
   Future<String> _authUser(LoginData data) {
-    debugPrint('Name: ${data.name}, Password: ${data.password}');
     return Future.delayed(loginTime).then((_) {
-      if (!users.containsKey(data.name)) {
-        return 'User not exists';
-      }
-      if (users[data.name] != data.password) {
-        return 'Password does not match';
-      }
+      user.mail = data.name;
+      user.password = data.password;
+
+      Future<APIResponse<User>> loginUserResponse = userService.login(user);
+      loginUserResponse.then((value) => {
+            if (value.error)
+              {print("kullanici yok")}
+            else
+              {
+                setState(() {
+                  isValid = true;
+                })
+              }
+          });
+
       return null;
     });
   }
@@ -41,7 +63,7 @@ class LoginPage extends StatelessWidget {
 
     user.mail = data.name;
     user.password = data.password;
-
+    final userResponse = userService.signUp(user);
     return Future.delayed(loginTime).then((_) {
       return null;
     });
@@ -50,9 +72,6 @@ class LoginPage extends StatelessWidget {
   Future<String> _recoverPassword(String name) {
     debugPrint('Name: $name');
     return Future.delayed(loginTime).then((_) {
-      if (!users.containsKey(name)) {
-        return 'User not exists';
-      }
       return "null";
     });
   }
@@ -64,11 +83,12 @@ class LoginPage extends StatelessWidget {
       onLogin: _authUser,
       onSignup: _signupUser,
       onSubmitAnimationCompleted: () {
-        final userResponse = userService.signUp(user);
-
-        Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => const MapScreen(),
-        ));
+        if (isValid) {
+          Route route = MaterialPageRoute(builder: (context) {
+            return MapScreen();
+          });
+          Navigator.push(context, route);
+        }
       },
       onRecoverPassword: _recoverPassword,
     );

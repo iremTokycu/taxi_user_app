@@ -5,6 +5,7 @@ class User {
   String name;
   String surname;
   String mail;
+  String valid;
 
   User(
       {this.id,
@@ -12,7 +13,8 @@ class User {
       this.surname,
       this.password,
       this.name,
-      this.mail});
+      this.mail,
+      this.valid});
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
@@ -21,6 +23,7 @@ class User {
         password: json['password'],
         surname: json['surname'],
         name: json['name'],
-        mail: json['mail']);
+        mail: json['mail'],
+        valid: json['valid']);
   }
 }

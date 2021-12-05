@@ -9,14 +9,53 @@ class UserService {
   Future<APIResponse<bool>> signUp(User user) async {
     var API = Enviroment().API_URL + "/public-userapp-api/signup";
     print(API);
-    return http.post(Uri.parse(API), body: user).then((data) {
-      print(data.statusCode);
+    // ignore: missing_return
+    return http
+        .post(Uri.parse(API),
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: jsonEncode({
+              'password': user.password,
+              'mail': user.mail
+              // ignore: missing_return
+            }))
+        // ignore: missing_return
+        .then((data) {
       if (data.statusCode == 200) {
         final result = json.decode(data.body);
-        print(result);
+        return APIResponse<bool>(data: result, error: true);
       }
-    }).catchError((onError) {
-      return APIResponse<bool>(data: false, error: true);
+    });
+  }
+
+  Future<APIResponse<User>> login(User user) async {
+    var API = Enviroment().API_URL + "/public-userapp-api/login";
+    print(API);
+    // ignore: missing_return
+    return http
+        .post(Uri.parse(API),
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: jsonEncode({
+              'password': user.password,
+              'mail': user.mail
+              // ignore: missing_return
+            }))
+        // ignore: missing_return
+        .then((data) {
+      if (data.statusCode == 200 && data.body != "") {
+        final result = json.decode(data.body);
+
+        User user = new User(
+            mail: result['mail'],
+            password: result['password'],
+            valid: result['valid']);
+
+        return APIResponse<User>(data: user);
+      }
+      return APIResponse<User>(error: true);
     });
   }
 }
