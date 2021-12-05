@@ -96,7 +96,7 @@ class PinPutWidgetState extends State<PinPutWidget> {
                       ),
                       onPressed: () {
                         Route route = MaterialPageRoute(builder: (context) {
-                          return Maps();
+                          return MapScreen();
                         });
                         Navigator.push(context, route);
                       },

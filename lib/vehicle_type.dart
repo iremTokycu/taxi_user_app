@@ -84,7 +84,7 @@ class _VehicleTypeWidgetState extends State<VehicleTypeWidget> {
 
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Maps()),
+                      MaterialPageRoute(builder: (context) => MapScreen()),
                     );
                   });
                 },
@@ -110,7 +110,7 @@ class _VehicleTypeWidgetState extends State<VehicleTypeWidget> {
 
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Maps()),
+                      MaterialPageRoute(builder: (context) => MapScreen()),
                     );
                   });
                 },
@@ -136,7 +136,7 @@ class _VehicleTypeWidgetState extends State<VehicleTypeWidget> {
 
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Maps()),
+                      MaterialPageRoute(builder: (context) => MapScreen()),
                     );
                   });
                 },

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:splashscreen/splashscreen.dart';
-ackage:splashscreen/splashscreen.dart';
 import 'package:taxi/service/user_service.dart';
 
 import 'intro.dart';

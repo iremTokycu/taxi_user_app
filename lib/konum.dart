@@ -1,9 +1,7 @@
 import 'dart:async';
 
-import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -12,11 +10,10 @@ import 'package:taxi/payment_rate.dart';
 import 'package:taxi/sidebar.dart';
 import 'package:taxi/vehicle_type.dart';
 
-import 'code.dart';
-import 'date_pickeContext context) {
-    return MapScreen();
-  }
-}
+import 'date_picker.dart';
+
+
+void main() => runApp(MapScreen());
 
 class MapScreen extends StatefulWidget {
   const MapScreen({Key key}) : super(key: key);

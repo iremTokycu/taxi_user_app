@@ -1,14 +1,13 @@
-import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
-// For changing the language
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'konum.dart';
-// import 'package:flutter_cupertino_localizations/flutter_cupertino_localizations.dart';
+
+
 
 const appName = 'Rezervasyon Ekranı';
 
@@ -117,7 +116,7 @@ class _DateTimeFormState extends State<DateTimeForm> {
                       print('enter');
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Maps()),
+                        MaterialPageRoute(builder: (context) => MapScreen()),
                       );
                     },
                   ),

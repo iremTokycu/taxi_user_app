@@ -4,7 +4,6 @@ import '../address.dart';
 import '../credit_cart.dart';
 import '../konum.dart';
 import '../login.dart';
-import '../route.dart';
 import '../travel_history.dart';
 
 
@@ -170,11 +169,7 @@ class NavigationDrawerWidget extends StatelessWidget {
 
         break;
 
-      case 5:
-        Route route = MaterialPageRoute(builder: (context){return RouteScreen();});
-        Navigator.push(context, route);
 
-        break;
 
     }
   }

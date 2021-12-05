@@ -92,7 +92,7 @@ class _PaymentRateWidgetState extends State<PaymentRateWidget> {
 
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Maps()),
+                        MaterialPageRoute(builder: (context) => MapScreen()),
                       );
                     });
                   },
@@ -121,7 +121,7 @@ class _PaymentRateWidgetState extends State<PaymentRateWidget> {
 
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Maps()),
+                        MaterialPageRoute(builder: (context) => MapScreen()),
                       );
                     });
                   },

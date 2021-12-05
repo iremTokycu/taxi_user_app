@@ -1,9 +1,11 @@
-import 'package:flutter/material'package:taxi/route.dart';
+import 'package:flutter/material.dart';
+import 'package:taxi/reservations.dart';
 import 'package:taxi/travel_history.dart';
 
 import 'address.dart';
 import 'credit_cart.dart';
 import 'konum.dart';
+
 
 void main() {
   runApp(SidebarPage());
@@ -61,7 +63,7 @@ class SidebarPage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Maps()),
+                  MaterialPageRoute(builder: (context) => MapScreen()),
                 );
               },
             ),
@@ -152,12 +154,7 @@ class SidebarPage extends StatelessWidget {
         Navigator.push(context, route);
 
         break;
-      case 4:
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => RouteScreen(),
-        ));
 
-        break;
     }
   }
 }
