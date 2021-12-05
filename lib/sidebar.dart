@@ -1,12 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:foldable_sidebar/foldable_sidebar.dart';
-import 'package:taxi/reservations.dart';
+import 'package:flutter/material'package:taxi/route.dart';
 import 'package:taxi/travel_history.dart';
 
 import 'address.dart';
 import 'credit_cart.dart';
 import 'konum.dart';
-import 'login.dart';
 
 void main() {
   runApp(SidebarPage());
@@ -45,7 +42,7 @@ class SidebarPage extends StatelessWidget {
                     SizedBox(
                       height: 5,
                     ),
-                    Text("0538 841 7455")
+                    Text("0538 562 4323")
                   ],
                 )
               ],
@@ -67,16 +64,6 @@ class SidebarPage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => Maps()),
                 );
               },
-            ),
-            SizedBox(
-              height: 24,
-            ),
-            buildMenuItem(
-                text: 'Kredi Kartlarım',
-                icon: Icons.credit_card,
-                onClicked: () => selectedItem(context, 0)),
-            SizedBox(
-              height: 16,
             ),
             buildMenuItem(
                 text: 'Rezervasyonlarım',
@@ -167,7 +154,7 @@ class SidebarPage extends StatelessWidget {
         break;
       case 4:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => LoginPage(),
+          builder: (context) => RouteScreen(),
         ));
 
         break;

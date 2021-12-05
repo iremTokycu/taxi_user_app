@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
+ackage:splashscreen/splashscreen.dart';
+import 'package:taxi/service/user_service.dart';
+
 import 'intro.dart';
 
+void setupLocator() {
+  GetIt.I.registerLazySingleton(() => UserService());
+}
+
 void main() {
+  setupLocator();
   runApp(new MaterialApp(
     home: new SplashScreenPage(),
   ));

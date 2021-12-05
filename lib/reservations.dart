@@ -1,9 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:taxi/sidebar.dart';
-
-import 'code.dart';
 
 void main() {
   runApp(new MaterialApp(
@@ -36,7 +33,10 @@ class _ReservationPageWidgetState extends State<ReservationPageWidget> {
           color: Colors.black, //change your color here
         ),
         backgroundColor: Colors.yellow,
-        title: Text("Rezervasyonlar",style: TextStyle(color: Colors.black),),
+        title: Text(
+          "Rezervasyonlar",
+          style: TextStyle(color: Colors.black),
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -73,7 +73,7 @@ class _ReservationPageWidgetState extends State<ReservationPageWidget> {
                           SizedBox(
                             width: 7,
                           ),
-                          Text("Duygu", style: TextStyle(fontSize: 15))
+                          Text("İrem", style: TextStyle(fontSize: 15))
                         ],
                       ),
                       SizedBox(
@@ -95,7 +95,7 @@ class _ReservationPageWidgetState extends State<ReservationPageWidget> {
                           SizedBox(
                             width: 7,
                           ),
-                          Text("Durukan", style: TextStyle(fontSize: 15))
+                          Text("TOKUYUCU", style: TextStyle(fontSize: 15))
                         ],
                       ),
                       SizedBox(
@@ -117,7 +117,7 @@ class _ReservationPageWidgetState extends State<ReservationPageWidget> {
                           SizedBox(
                             width: 7,
                           ),
-                          Text("Tepecik Mahallesi",
+                          Text("Bahçelievler Mahallesi",
                               style: TextStyle(fontSize: 15))
                         ],
                       ),
@@ -163,7 +163,7 @@ class _ReservationPageWidgetState extends State<ReservationPageWidget> {
                           SizedBox(
                             width: 7,
                           ),
-                          Text("0538 841 74 55", style: TextStyle(fontSize: 15))
+                          Text("0538 562 43 23", style: TextStyle(fontSize: 15))
                         ],
                       ),
                       SizedBox(
@@ -185,7 +185,7 @@ class _ReservationPageWidgetState extends State<ReservationPageWidget> {
                           SizedBox(
                             width: 7,
                           ),
-                          Text("07.10.2021-10.30",
+                          Text("01.01.2022-10.30",
                               style: TextStyle(fontSize: 15))
                         ],
                       ),
@@ -228,7 +228,7 @@ class _ReservationPageWidgetState extends State<ReservationPageWidget> {
                           SizedBox(
                             width: 7,
                           ),
-                          Text("Duygu", style: TextStyle(fontSize: 15))
+                          Text("İrem", style: TextStyle(fontSize: 15))
                         ],
                       ),
                       SizedBox(
@@ -250,7 +250,7 @@ class _ReservationPageWidgetState extends State<ReservationPageWidget> {
                           SizedBox(
                             width: 7,
                           ),
-                          Text("Durukan", style: TextStyle(fontSize: 15))
+                          Text("TOKUYUCU", style: TextStyle(fontSize: 15))
                         ],
                       ),
                       SizedBox(
@@ -272,7 +272,7 @@ class _ReservationPageWidgetState extends State<ReservationPageWidget> {
                           SizedBox(
                             width: 7,
                           ),
-                          Text("Tepecik Mahallesi",
+                          Text("Bahçelievler Mahallesi",
                               style: TextStyle(fontSize: 15))
                         ],
                       ),
@@ -318,7 +318,7 @@ class _ReservationPageWidgetState extends State<ReservationPageWidget> {
                           SizedBox(
                             width: 7,
                           ),
-                          Text("0538 841 74 55", style: TextStyle(fontSize: 15))
+                          Text("0538 562 43 23", style: TextStyle(fontSize: 15))
                         ],
                       ),
                       SizedBox(
@@ -340,7 +340,7 @@ class _ReservationPageWidgetState extends State<ReservationPageWidget> {
                           SizedBox(
                             width: 7,
                           ),
-                          Text("07.10.2021-10.30",
+                          Text("01.01.2022-10.30",
                               style: TextStyle(fontSize: 15))
                         ],
                       ),
@@ -383,7 +383,7 @@ class _ReservationPageWidgetState extends State<ReservationPageWidget> {
                           SizedBox(
                             width: 7,
                           ),
-                          Text("Duygu", style: TextStyle(fontSize: 15))
+                          Text("İrem", style: TextStyle(fontSize: 15))
                         ],
                       ),
                       SizedBox(
@@ -405,7 +405,7 @@ class _ReservationPageWidgetState extends State<ReservationPageWidget> {
                           SizedBox(
                             width: 7,
                           ),
-                          Text("Durukan", style: TextStyle(fontSize: 15))
+                          Text("TOKUYUCU", style: TextStyle(fontSize: 15))
                         ],
                       ),
                       SizedBox(
@@ -427,7 +427,7 @@ class _ReservationPageWidgetState extends State<ReservationPageWidget> {
                           SizedBox(
                             width: 7,
                           ),
-                          Text("Tepecik Mahallesi",
+                          Text("Bahçelievler Mahallesi",
                               style: TextStyle(fontSize: 15))
                         ],
                       ),
@@ -473,7 +473,7 @@ class _ReservationPageWidgetState extends State<ReservationPageWidget> {
                           SizedBox(
                             width: 7,
                           ),
-                          Text("0538 841 74 55", style: TextStyle(fontSize: 15))
+                          Text("0538 562 43 23", style: TextStyle(fontSize: 15))
                         ],
                       ),
                       SizedBox(
@@ -495,7 +495,7 @@ class _ReservationPageWidgetState extends State<ReservationPageWidget> {
                           SizedBox(
                             width: 7,
                           ),
-                          Text("07.10.2021-10.30",
+                          Text("01.01.2022-10.30",
                               style: TextStyle(fontSize: 15))
                         ],
                       ),
@@ -538,7 +538,7 @@ class _ReservationPageWidgetState extends State<ReservationPageWidget> {
                           SizedBox(
                             width: 7,
                           ),
-                          Text("Duygu", style: TextStyle(fontSize: 15))
+                          Text("İrem", style: TextStyle(fontSize: 15))
                         ],
                       ),
                       SizedBox(
@@ -560,7 +560,7 @@ class _ReservationPageWidgetState extends State<ReservationPageWidget> {
                           SizedBox(
                             width: 7,
                           ),
-                          Text("Durukan", style: TextStyle(fontSize: 15))
+                          Text("TOKUYUCU", style: TextStyle(fontSize: 15))
                         ],
                       ),
                       SizedBox(
@@ -582,7 +582,7 @@ class _ReservationPageWidgetState extends State<ReservationPageWidget> {
                           SizedBox(
                             width: 7,
                           ),
-                          Text("Tepecik Mahallesi",
+                          Text("Bahçelievler Mahallesi",
                               style: TextStyle(fontSize: 15))
                         ],
                       ),
@@ -628,7 +628,7 @@ class _ReservationPageWidgetState extends State<ReservationPageWidget> {
                           SizedBox(
                             width: 7,
                           ),
-                          Text("0538 841 74 55", style: TextStyle(fontSize: 15))
+                          Text("0538 562 43 23", style: TextStyle(fontSize: 15))
                         ],
                       ),
                       SizedBox(
@@ -650,7 +650,7 @@ class _ReservationPageWidgetState extends State<ReservationPageWidget> {
                           SizedBox(
                             width: 7,
                           ),
-                          Text("07.10.2021-10.30",
+                          Text("01.01.2022-10.30",
                               style: TextStyle(fontSize: 15))
                         ],
                       ),

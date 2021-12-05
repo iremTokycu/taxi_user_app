@@ -1,10 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:ndialog/ndialog.dart';
 import 'package:taxi/sidebar.dart';
-
-import 'code.dart';
 
 void main() {
   runApp(new MaterialApp(
@@ -37,7 +34,10 @@ class _AddressPageWidgetState extends State<AddressPageWidget> {
           color: Colors.black, //change your color here
         ),
         backgroundColor: Colors.yellow,
-        title: Text("Favori Adreslerim",style: TextStyle(color: Colors.black),),
+        title: Text(
+          "Favori Adreslerim",
+          style: TextStyle(color: Colors.black),
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -73,7 +73,7 @@ class _AddressPageWidgetState extends State<AddressPageWidget> {
                         height: 10,
                       ),
                       Text(
-                        "Tepecik Mahallesi. Şehit Nihat Eren Sokak. Tutkun Sitesi. A Blok. No:12. Bolu/Merkez",
+                        "Bahçelievler Mahallesi. Çiğdem Sokak. Aykanat Apartmanı. No:13. Bolu/Merkez",
                         style: TextStyle(fontSize: 15),
                       ),
                     ]),
@@ -111,7 +111,7 @@ class _AddressPageWidgetState extends State<AddressPageWidget> {
                         height: 10,
                       ),
                       Text(
-                        "Tepecik Mahallesi. Şehit Nihat Eren Sokak. Tutkun Sitesi. A Blok. No:12. Bolu/Merkez",
+                        "Bahçelievler Mahallesi. Çiğdem Sokak. Aykanat Apartmanı. No:13. Bolu/Merkez",
                         style: TextStyle(fontSize: 15),
                       ),
                     ]),
@@ -149,7 +149,7 @@ class _AddressPageWidgetState extends State<AddressPageWidget> {
                         height: 10,
                       ),
                       Text(
-                        "Tepecik Mahallesi. Şehit Nihat Eren Sokak. Tutkun Sitesi. A Blok. No:12. Bolu/Merkez",
+                        "Bahçelievler Mahallesi. Çiğdem Sokak. Aykanat Apartmanı. No:13. Bolu/Merkez",
                         style: TextStyle(fontSize: 15),
                       ),
                     ]),
@@ -187,7 +187,7 @@ class _AddressPageWidgetState extends State<AddressPageWidget> {
                         height: 10,
                       ),
                       Text(
-                        "Tepecik Mahallesi. Şehit Nihat Eren Sokak. Tutkun Sitesi. A Blok. No:12. Bolu/Merkez",
+                        "Bahçelievler Mahallesi. Çiğdem Sokak. Aykanat Apartmanı. No:13. Bolu/Merkez",
                         style: TextStyle(fontSize: 15),
                       ),
                     ]),

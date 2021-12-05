@@ -3,25 +3,17 @@ import 'dart:async';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:taxi/main.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:taxi/main.dart';
 import 'package:taxi/payment_rate.dart';
 import 'package:taxi/sidebar.dart';
 import 'package:taxi/vehicle_type.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
 import 'code.dart';
-import 'date_picker.dart';
-import 'package:geolocator/geolocator.dart';
-
-void main() => runApp(new MaterialApp(
-      home: new Maps(),
-    ));
-
-class Maps extends StatelessWidget {
-  const Maps({Key key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
+import 'date_pickeContext context) {
     return MapScreen();
   }
 }
@@ -55,20 +47,6 @@ class _MapScreenState extends State<MapScreen> {
   LatLng _lastMapPosition = _center;
   Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
-  buildmap() async {
-    Position position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high);
-    _markers.add(Marker(
-// This marker id can be anything that uniquely identifies each marker.
-      markerId: MarkerId(_lastMapPosition.toString()),
-      position: new LatLng(40.73814400731573, 31.61535610048799),
-      infoWindow: InfoWindow(
-        title: 'Şuanki konum',
-      ),
-      icon: BitmapDescriptor.defaultMarker,
-    ));
-  }
-
   @override
   void dispose() {
     _googleMapController.dispose();
@@ -78,7 +56,7 @@ class _MapScreenState extends State<MapScreen> {
   @override
   void initState() {
     // TODO: implement initState
-    buildmap();
+
     getPaymentRate();
     super.initState();
   }
