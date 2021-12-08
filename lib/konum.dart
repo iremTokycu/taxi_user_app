@@ -2,16 +2,16 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:taxi/main.dart';
 import 'package:taxi/payment_rate.dart';
+import 'package:taxi/service/user_service.dart';
 import 'package:taxi/sidebar.dart';
 import 'package:taxi/vehicle_type.dart';
 
 import 'date_picker.dart';
-
 
 void main() => runApp(MapScreen());
 
@@ -23,6 +23,8 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
+  UserService get userService => GetIt.I<UserService>();
+
   static const _initialCameraPosition = CameraPosition(
     target: LatLng(40.7358027, 31.5799509),
     zoom: 11.5,
@@ -53,7 +55,8 @@ class _MapScreenState extends State<MapScreen> {
   @override
   void initState() {
     // TODO: implement initState
-
+    final result = userService.deneme();
+    print(result);
     getPaymentRate();
     super.initState();
   }

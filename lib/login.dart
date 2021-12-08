@@ -79,7 +79,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
   @override
   Widget build(BuildContext context) {
     return FlutterLogin(
-      title: 'Taxi Driver',
+      title: 'Welcome',
       onLogin: _authUser,
       onSignup: _signupUser,
       onSubmitAnimationCompleted: () {
